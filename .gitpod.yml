@@ -1,0 +1,15 @@
+tasks:
+  - before: >
+      wget -qOdatabase-setup.sh https://codejudge-starter-repo-artifacts.s3.ap-south-1.amazonaws.com/backend-project/gitpod/php/7.2/db-gitpod-setup.sh &&
+      chmod 0755 database-setup.sh &&
+      bash database-setup.sh
+    init: composer update && composer install
+    command: php -S 127.0.0.1:8080 -t public
+ports:
+  - port: 8080
+    onOpen: open-preview
+    visibility: public
+vscode:
+  extensions:
+    - felixfbecker.php-debug
+    - bmewburn.vscode-intelephense-client
